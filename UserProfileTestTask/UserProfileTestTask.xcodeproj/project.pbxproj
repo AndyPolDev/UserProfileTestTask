@@ -8,18 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		A1687146290AA24500475775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687145290AA24500475775 /* AppDelegate.swift */; };
-		A168714A290AA24500475775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687149290AA24500475775 /* ViewController.swift */; };
+		A168714A290AA24500475775 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687149290AA24500475775 /* MainViewController.swift */; };
 		A168714F290AA24700475775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A168714E290AA24700475775 /* Assets.xcassets */; };
 		A1687152290AA24700475775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1687150290AA24700475775 /* LaunchScreen.storyboard */; };
+		A168715F290AB4C400475775 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168715E290AB4C400475775 /* Resources.swift */; };
+		A1687162290AB75600475775 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687161290AB75600475775 /* MainTableViewCell.swift */; };
+		A1687166290AC46100475775 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687165290AC46100475775 /* UIView + Extension.swift */; };
+		A1687169290AE16000475775 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687168290AE16000475775 /* EditingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A1687142290AA24500475775 /* UserProfileTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserProfileTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1687145290AA24500475775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1687149290AA24500475775 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A1687149290AA24500475775 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A168714E290AA24700475775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1687151290AA24700475775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1687153290AA24700475775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A168715E290AB4C400475775 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		A1687161290AB75600475775 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		A1687165290AC46100475775 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		A1687168290AE16000475775 /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				A1687159290AA53400475775 /* Application */,
-				A168715B290AA5AF00475775 /* Controllers */,
-				A168715A290AA58100475775 /* Resources */,
+				A168715C290AAA7500475775 /* MainModule */,
+				A1687167290AE12C00475775 /* EditingModule */,
+				A168715D290AB44400475775 /* Resources */,
+				A1687163290AC42500475775 /* Extensions */,
+				A168715A290AA58100475775 /* SupportingFiles */,
 			);
 			path = UserProfileTestTask;
 			sourceTree = "<group>";
@@ -67,22 +78,71 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		A168715A290AA58100475775 /* Resources */ = {
+		A168715A290AA58100475775 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				A168714E290AA24700475775 /* Assets.xcassets */,
 				A1687150290AA24700475775 /* LaunchScreen.storyboard */,
 				A1687153290AA24700475775 /* Info.plist */,
 			);
-			path = Resources;
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		A168715B290AA5AF00475775 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1687149290AA24500475775 /* ViewController.swift */,
+				A1687149290AA24500475775 /* MainViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A168715C290AAA7500475775 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				A1687160290AB72600475775 /* Views */,
+				A168715B290AA5AF00475775 /* Controllers */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		A168715D290AB44400475775 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A168715E290AB4C400475775 /* Resources.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1687160290AB72600475775 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1687161290AB75600475775 /* MainTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1687163290AC42500475775 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A1687164290AC44400475775 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1687164290AC44400475775 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				A1687165290AC46100475775 /* UIView + Extension.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		A1687167290AE12C00475775 /* EditingModule */ = {
+			isa = PBXGroup;
+			children = (
+				A1687168290AE16000475775 /* EditingViewController.swift */,
+			);
+			path = EditingModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +215,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A168714A290AA24500475775 /* ViewController.swift in Sources */,
+				A168715F290AB4C400475775 /* Resources.swift in Sources */,
+				A1687169290AE16000475775 /* EditingViewController.swift in Sources */,
+				A168714A290AA24500475775 /* MainViewController.swift in Sources */,
+				A1687162290AB75600475775 /* MainTableViewCell.swift in Sources */,
+				A1687166290AC46100475775 /* UIView + Extension.swift in Sources */,
 				A1687146290AA24500475775 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,7 +361,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 43434K798H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UserProfileTestTask/Resources/Info.plist;
+				INFOPLIST_FILE = UserProfileTestTask/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -328,7 +392,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 43434K798H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UserProfileTestTask/Resources/Info.plist;
+				INFOPLIST_FILE = UserProfileTestTask/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
