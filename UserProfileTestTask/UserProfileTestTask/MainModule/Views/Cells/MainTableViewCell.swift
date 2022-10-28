@@ -1,6 +1,6 @@
 import UIKit
 
-class MainTableViewCell: UITableViewCell {
+final class MainTableViewCell: UITableViewCell {
     
     static let idMainTableViewCell = "idMainTableViewCell"
     
@@ -11,6 +11,7 @@ class MainTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .right
         label.text = "Test"
+        label.font = Resources.Fonts.avenirNextRegular(with: 18)
         return label
     }()
     
@@ -26,6 +27,8 @@ class MainTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
+        selectionStyle = .none
+        nameLabel.font = Resources.Fonts.avenirNextRegular(with: 18) 
         addView(nameLabel)
         addView(descriptionLabel)
     }
@@ -33,13 +36,16 @@ class MainTableViewCell: UITableViewCell {
     internal func cellConfigure(name: String) {
         nameLabel.text = name
     }
-    
 }
 
 //MARK: - setConstraints
 
 extension MainTableViewCell {
     private func setConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
+        ])
+        
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

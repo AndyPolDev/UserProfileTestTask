@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainViewController: UITableViewController {
+final class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +22,15 @@ final class MainViewController: UITableViewController {
     }
     
     @objc private func editingPressed() {
-        print("editingPressed")
+        let editingTableViewController = EditingTableViewController()
+        navigationItem.backButtonTitle = "Назад"
+        navigationController?.pushViewController(editingTableViewController, animated: true)
     }
 }
 
 //MARK: - UITableViewDataSource
 
-extension MainViewController {
+extension MainTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         Resources.UserInfoFields.allCases.count
@@ -45,25 +47,21 @@ extension MainViewController {
         
         return cell
     }
-    
 }
 
 //MARK: - UITableViewDelegate
 
-extension MainViewController {
+extension MainTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         indexPath.row == 1 ? UITableView.automaticDimension : 44
     }
-    
 }
 
 //MARK: - setConstraints
 
-extension MainViewController {
+extension MainTableViewController {
     private func setConstraints() {
         
     }
 }
-
-

@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 enum Resources {
     
@@ -8,5 +8,11 @@ enum Resources {
         case thirdName = "Отчество"
         case birthday = "Дата рождения"
         case gender = "Пол"
+    }
+    
+    enum Fonts {
+        static func avenirNextRegular(with size: CGFloat) -> UIFont? {
+            UIFont(name: "Avenir next", size: size)
+        }
     }
 }
