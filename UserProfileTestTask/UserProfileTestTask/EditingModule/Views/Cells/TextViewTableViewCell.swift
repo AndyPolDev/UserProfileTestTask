@@ -13,13 +13,14 @@ final class TextViewTableViewCell: UITableViewCell {
     private let nameLabel = UILabel()
     private let nameTextView = NameTextView()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
         setConstraints()
         setDelegates()
+        textViewDidChange(nameTextView)
+        layoutIfNeeded()
     }
     
     required init?(coder: NSCoder) {
@@ -38,8 +39,9 @@ final class TextViewTableViewCell: UITableViewCell {
         nameTextView.delegate = self
     }
     
-    internal func cellConfigure(name: String) {
+    internal func cellConfigure(name: String, scrollEnable: Bool) {
         nameLabel.text = name
+        nameTextView.isScrollEnabled = scrollEnable
     }
 }
 

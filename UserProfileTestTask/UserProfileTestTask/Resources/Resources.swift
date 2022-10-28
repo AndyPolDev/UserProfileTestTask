@@ -10,6 +10,12 @@ enum Resources {
         case gender = "Пол"
     }
     
+    enum Gender: String, CaseIterable {
+        case noSpecified = "Не указано"
+        case male = "Мужской"
+        case female = "Женский"
+    }
+    
     enum Fonts {
         static func avenirNextRegular(with size: CGFloat) -> UIFont? {
             UIFont(name: "Avenir next", size: size)
