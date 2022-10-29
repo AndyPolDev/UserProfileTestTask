@@ -2,11 +2,13 @@ import UIKit
 
 final class MainTableViewController: UITableViewController {
     
+    private var userInfo = UserInfoModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
-        setConstraints()
+        getUserModel()
         
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.idMainTableViewCell)
     }
@@ -21,9 +23,12 @@ final class MainTableViewController: UITableViewController {
                                          action: #selector(editingPressed))
     }
     
+    private func getUserModel() {
+        userInfo = UserDefaultsManager.getUserInfoModel()
+    }
+    
     @objc private func editingPressed() {
-        let editingTableViewController = EditingViewController()
-        navigationItem.backButtonTitle = "Назад"
+        let editingTableViewController = EditingViewController(userInfo)
         navigationController?.pushViewController(editingTableViewController, animated: true)
     }
 }
@@ -58,10 +63,3 @@ extension MainTableViewController {
     }
 }
 
-//MARK: - setConstraints
-
-extension MainTableViewController {
-    private func setConstraints() {
-        
-    }
-}

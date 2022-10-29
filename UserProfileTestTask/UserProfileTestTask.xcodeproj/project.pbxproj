@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A115406D290D39FB00A80412 /* EditingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A115406C290D39FB00A80412 /* EditingTableView.swift */; };
+		A1154070290D43DD00A80412 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A115406F290D43DD00A80412 /* UserInfoModel.swift */; };
+		A1154073290D4B5600A80412 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1154072290D4B5600A80412 /* UserDefaultsManager.swift */; };
+		A1154075290D63F900A80412 /* UIViewController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1154074290D63F900A80412 /* UIViewController + extension.swift */; };
+		A1154077290D68CF00A80412 /* UIBarButtonItem + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1154076290D68CF00A80412 /* UIBarButtonItem + Extension.swift */; };
 		A1371DD5290BA228008EB1A8 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1371DD4290BA228008EB1A8 /* TextViewTableViewCell.swift */; };
 		A1371DD7290BA546008EB1A8 /* NameTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1371DD6290BA546008EB1A8 /* NameTextView.swift */; };
 		A1371DD9290C0591008EB1A8 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1371DD8290C0591008EB1A8 /* DatePickerTableViewCell.swift */; };
@@ -26,6 +30,10 @@
 
 /* Begin PBXFileReference section */
 		A115406C290D39FB00A80412 /* EditingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableView.swift; sourceTree = "<group>"; };
+		A115406F290D43DD00A80412 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		A1154072290D4B5600A80412 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		A1154074290D63F900A80412 /* UIViewController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + extension.swift"; sourceTree = "<group>"; };
+		A1154076290D68CF00A80412 /* UIBarButtonItem + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem + Extension.swift"; sourceTree = "<group>"; };
 		A1371DD4290BA228008EB1A8 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		A1371DD6290BA546008EB1A8 /* NameTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextView.swift; sourceTree = "<group>"; };
 		A1371DD8290C0591008EB1A8 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -55,6 +63,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A115406E290D43A200A80412 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A115406F290D43DD00A80412 /* UserInfoModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1154071290D4B1F00A80412 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A1154072290D4B5600A80412 /* UserDefaultsManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A1371DD1290BA1F2008EB1A8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +131,7 @@
 				A1687159290AA53400475775 /* Application */,
 				A168715C290AAA7500475775 /* MainModule */,
 				A1687167290AE12C00475775 /* EditingModule */,
+				A1154071290D4B1F00A80412 /* Services */,
 				A168715D290AB44400475775 /* Resources */,
 				A1687163290AC42500475775 /* Extensions */,
 				A168715A290AA58100475775 /* SupportingFiles */,
@@ -143,6 +168,7 @@
 		A168715C290AAA7500475775 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				A115406E290D43A200A80412 /* Models */,
 				A1687160290AB72600475775 /* Views */,
 				A168715B290AA5AF00475775 /* Controllers */,
 			);
@@ -177,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				A1687165290AC46100475775 /* UIView + Extension.swift */,
+				A1154074290D63F900A80412 /* UIViewController + extension.swift */,
+				A1154076290D68CF00A80412 /* UIBarButtonItem + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -272,12 +300,16 @@
 				A1687169290AE16000475775 /* EditingViewController.swift in Sources */,
 				A168714A290AA24500475775 /* MainTableViewController.swift in Sources */,
 				A1687162290AB75600475775 /* MainTableViewCell.swift in Sources */,
+				A1154070290D43DD00A80412 /* UserInfoModel.swift in Sources */,
 				A1371DDD290C2415008EB1A8 /* GenderPickerView.swift in Sources */,
 				A1687166290AC46100475775 /* UIView + Extension.swift in Sources */,
 				A1687146290AA24500475775 /* AppDelegate.swift in Sources */,
 				A1371DDB290C1276008EB1A8 /* PickerViewTableViewCell.swift in Sources */,
 				A1371DD7290BA546008EB1A8 /* NameTextView.swift in Sources */,
+				A1154075290D63F900A80412 /* UIViewController + extension.swift in Sources */,
+				A1154077290D68CF00A80412 /* UIBarButtonItem + Extension.swift in Sources */,
 				A115406D290D39FB00A80412 /* EditingTableView.swift in Sources */,
+				A1154073290D4B5600A80412 /* UserDefaultsManager.swift in Sources */,
 				A1371DD5290BA228008EB1A8 /* TextViewTableViewCell.swift in Sources */,
 				A1B49EE1290C290E00B1474E /* GenderTextField.swift in Sources */,
 				A1371DD9290C0591008EB1A8 /* DatePickerTableViewCell.swift in Sources */,
