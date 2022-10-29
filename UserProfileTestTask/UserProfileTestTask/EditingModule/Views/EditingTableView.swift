@@ -1,43 +1,34 @@
 import UIKit
 
-final class EditingTableViewController: UITableViewController {
+final class EditingTableView: UITableView {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
         
-        setupViews()
-        setConstraints()
+        register(TextViewTableViewCell.self, forCellReuseIdentifier: TextViewTableViewCell.idTextViewTableViewCell)
+        register(DatePickerTableViewCell.self, forCellReuseIdentifier: DatePickerTableViewCell.idDatePickerTableViewCell)
+        register(PickerViewTableViewCell.self, forCellReuseIdentifier: PickerViewTableViewCell.idPickerViewTableViewCell)
         
-        tableView.register(TextViewTableViewCell.self, forCellReuseIdentifier: TextViewTableViewCell.idTextViewTableViewCell)
-        tableView.register(DatePickerTableViewCell.self, forCellReuseIdentifier: DatePickerTableViewCell.idDatePickerTableViewCell)
-        tableView.register(PickerViewTableViewCell.self, forCellReuseIdentifier: PickerViewTableViewCell.idPickerViewTableViewCell)
-        
+        delegate = self
+        dataSource = self
     }
     
-    private func setupViews() {
-        title = "Редактирование"
-        view.backgroundColor = .white
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(savingPressed))
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func savingPressed() {
-        print("savingPressed")
-    }
+    
 }
 
 //MARK: - UITableViewDataSource
 
-extension EditingTableViewController {
+extension EditingTableView: UITableViewDataSource {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         Resources.UserInfoFields.allCases.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let fieldName = Resources.UserInfoFields.allCases[indexPath.row].rawValue
         
@@ -78,28 +69,29 @@ extension EditingTableViewController {
     }
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - EditingTableView
 
-extension EditingTableViewController {
+extension EditingTableView: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         indexPath.row == 1 ? UITableView.automaticDimension : 44
     }
 }
 
 //MARK: - NameTextViewProtocol
 
-extension EditingTableViewController: NameTextViewProtocol {
+extension EditingTableView: NameTextViewProtocol {
     func changeSize() {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        beginUpdates()
+        endUpdates()
     }
 }
 
 //MARK: - setConstraints
 
-extension EditingTableViewController {
+extension EditingTableView {
     private func setConstraints() {
         
     }
 }
+
