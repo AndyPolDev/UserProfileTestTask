@@ -90,3 +90,4 @@ fastlane/test_output
 iOSInjectionProject/
 /UserProfileTestTask/UserProfileTestTask.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 IDEWorkspaceChecks.plist
+.DS_Store

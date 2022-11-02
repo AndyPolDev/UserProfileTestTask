@@ -17,6 +17,7 @@
 		A1371DD9290C0591008EB1A8 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1371DD8290C0591008EB1A8 /* DatePickerTableViewCell.swift */; };
 		A1371DDB290C1276008EB1A8 /* PickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1371DDA290C1276008EB1A8 /* PickerViewTableViewCell.swift */; };
 		A1371DDD290C2415008EB1A8 /* GenderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1371DDC290C2415008EB1A8 /* GenderPickerView.swift */; };
+		A14CF31F29126354005974D0 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CF31E29126354005974D0 /* UITableView + Extension.swift */; };
 		A1687146290AA24500475775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687145290AA24500475775 /* AppDelegate.swift */; };
 		A168714A290AA24500475775 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687149290AA24500475775 /* MainTableViewController.swift */; };
 		A168714F290AA24700475775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A168714E290AA24700475775 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		A1371DD8290C0591008EB1A8 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		A1371DDA290C1276008EB1A8 /* PickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTableViewCell.swift; sourceTree = "<group>"; };
 		A1371DDC290C2415008EB1A8 /* GenderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerView.swift; sourceTree = "<group>"; };
+		A14CF31E29126354005974D0 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
 		A1687142290AA24500475775 /* UserProfileTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserProfileTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1687145290AA24500475775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1687149290AA24500475775 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				A1687165290AC46100475775 /* UIView + Extension.swift */,
 				A1154074290D63F900A80412 /* UIViewController + extension.swift */,
 				A1154076290D68CF00A80412 /* UIBarButtonItem + Extension.swift */,
+				A14CF31E29126354005974D0 /* UITableView + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A168715F290AB4C400475775 /* Resources.swift in Sources */,
+				A14CF31F29126354005974D0 /* UITableView + Extension.swift in Sources */,
 				A1687169290AE16000475775 /* EditingViewController.swift in Sources */,
 				A168714A290AA24500475775 /* MainTableViewController.swift in Sources */,
 				A1687162290AB75600475775 /* MainTableViewCell.swift in Sources */,
