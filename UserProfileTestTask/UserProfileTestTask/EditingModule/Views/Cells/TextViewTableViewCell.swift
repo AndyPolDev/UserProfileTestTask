@@ -39,9 +39,15 @@ final class TextViewTableViewCell: UITableViewCell {
         nameTextView.delegate = self
     }
     
-    internal func cellConfigure(name: String, scrollEnable: Bool) {
+    internal func getCellValue() -> String {
+        nameTextView.text
+    }
+    
+    internal func cellConfigure(name: String, scrollEnable: Bool, value: String) {
         nameLabel.text = name
         nameTextView.isScrollEnabled = scrollEnable
+        nameTextView.text = value == "" ? "Введите данные" : value
+        nameTextView.textColor = value == "" ? .lightGray : .black
     }
 }
 
@@ -75,10 +81,6 @@ extension TextViewTableViewCell: UITextViewDelegate {
 
 extension TextViewTableViewCell {
     private func setConstraints() {
-        //        NSLayoutConstraint.activate([
-        //            heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
-        //        ])
-        
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

@@ -27,6 +27,8 @@
 		A1687166290AC46100475775 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687165290AC46100475775 /* UIView + Extension.swift */; };
 		A1687169290AE16000475775 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1687168290AE16000475775 /* EditingViewController.swift */; };
 		A1B49EE1290C290E00B1474E /* GenderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B49EE0290C290E00B1474E /* GenderTextField.swift */; };
+		A1EE90B52913B63D00C7B487 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE90B42913B63D00C7B487 /* String + Extension.swift */; };
+		A1EE90B72913B94300C7B487 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE90B62913B94300C7B487 /* Date + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		A1687165290AC46100475775 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		A1687168290AE16000475775 /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		A1B49EE0290C290E00B1474E /* GenderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTextField.swift; sourceTree = "<group>"; };
+		A1EE90B42913B63D00C7B487 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		A1EE90B62913B94300C7B487 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				A1687164290AC44400475775 /* UIKit */,
+				A1EE90B42913B63D00C7B487 /* String + Extension.swift */,
+				A1EE90B62913B94300C7B487 /* Date + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 				A168715F290AB4C400475775 /* Resources.swift in Sources */,
 				A14CF31F29126354005974D0 /* UITableView + Extension.swift in Sources */,
 				A1687169290AE16000475775 /* EditingViewController.swift in Sources */,
+				A1EE90B72913B94300C7B487 /* Date + Extension.swift in Sources */,
 				A168714A290AA24500475775 /* MainTableViewController.swift in Sources */,
 				A1687162290AB75600475775 /* MainTableViewCell.swift in Sources */,
 				A1154070290D43DD00A80412 /* UserInfoModel.swift in Sources */,
@@ -309,6 +316,7 @@
 				A1687166290AC46100475775 /* UIView + Extension.swift in Sources */,
 				A1687146290AA24500475775 /* AppDelegate.swift in Sources */,
 				A1371DDB290C1276008EB1A8 /* PickerViewTableViewCell.swift in Sources */,
+				A1EE90B52913B63D00C7B487 /* String + Extension.swift in Sources */,
 				A1371DD7290BA546008EB1A8 /* NameTextView.swift in Sources */,
 				A1154075290D63F900A80412 /* UIViewController + extension.swift in Sources */,
 				A1154077290D68CF00A80412 /* UIBarButtonItem + Extension.swift in Sources */,

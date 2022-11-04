@@ -19,7 +19,6 @@ final class EditingViewController: UIViewController {
         
         setupViews()
         setConstraints()
-        print(userInfo)
     }
     
     private func setupViews() {
@@ -32,22 +31,25 @@ final class EditingViewController: UIViewController {
                                                             action: #selector(saveButtonPressed))
         let backBarButtonItem = UIBarButtonItem.createCustomButton(viewController: self, selector: #selector(backBarButtonItemPressed))
         navigationItem.leftBarButtonItem = backBarButtonItem
+        editingTableView.setUserModel(userInfo)
         view.addView(editingTableView)
     }
     
-    private func authFields() -> Bool {
-        if userInfo.firstName != "" ||
-            userInfo.secondName != "" ||
-            userInfo.birthday != "" ||
-            userInfo.gender != "" ||
-            userInfo.birthday != "Не указано" {
-            return true
+    private func authFields(model: UserInfoModel) -> Bool {
+        if model.firstName == "Введите данные" ||
+            model.secondName == "Введите данные" ||
+            model.birthday == "" ||
+            model.gender == "" ||
+            model.gender == "Не указано" {
+            return false
         }
-        return false
+        return true
     }
-    
+
     @objc private func saveButtonPressed() {
-        if authFields() {
+        
+        let editedUserInfo = editingTableView.getUserInfo()
+        if authFields(model: editedUserInfo) {
             prestntSimpleAllert(title: "Готово", message: "Все обязательные поля заполнены")
         } else {
             prestntSimpleAllert(title: "Ошибка", message: "Заполните поля ФИ, дата рождения и пол")
@@ -55,12 +57,23 @@ final class EditingViewController: UIViewController {
     }
     
     @objc private func backBarButtonItemPressed() {
-        presentChangeAlert { changed in
-            if changed {
-                print(self.userInfo)
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.navigationController?.popViewController(animated: true)
+        
+        let editedUserInfo = editingTableView.getUserInfo()
+        
+        if editedUserInfo == userInfo {
+            navigationController?.popViewController(animated: true)
+        } else {
+            presentChangeAlert {[weak self] changed in
+                guard let self = self else { return }
+                if changed {
+                    guard let mainTableViewController = self.navigationController?.viewControllers.first as? MainTableViewController else {
+                        return
+                    }
+                    mainTableViewController.changeUserInfo(model: editedUserInfo)
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }

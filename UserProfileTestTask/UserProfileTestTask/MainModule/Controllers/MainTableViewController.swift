@@ -10,7 +10,8 @@ final class MainTableViewController: UITableViewController {
         setupViews()
         getUserModel()
         
-        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.idMainTableViewCell)
+        tableView.register(MainTableViewCell.self)
+        
     }
     
     private func setupViews() {
@@ -25,6 +26,20 @@ final class MainTableViewController: UITableViewController {
     
     private func getUserModel() {
         userInfo = UserDefaultsManager.getUserInfoModel()
+    }
+    
+    private func saveEditedUserInfo(save model: UserInfoModel) {
+        UserDefaultsManager.saveUserValue(Resources.UserInfoFields.firstName.rawValue, model.firstName)
+        UserDefaultsManager.saveUserValue(Resources.UserInfoFields.secondName.rawValue, model.secondName)
+        UserDefaultsManager.saveUserValue(Resources.UserInfoFields.thirdName.rawValue, model.thirdName)
+        UserDefaultsManager.saveUserValue(Resources.UserInfoFields.birthday.rawValue, model.birthday)
+        UserDefaultsManager.saveUserValue(Resources.UserInfoFields.gender.rawValue, model.gender)
+    }
+    
+    internal func changeUserInfo(model: UserInfoModel) {
+        saveEditedUserInfo(save: model)
+        userInfo = model
+        tableView.reloadData()
     }
     
     @objc private func editingPressed() {
@@ -42,13 +57,14 @@ extension MainTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.idMainTableViewCell, for: indexPath) as? MainTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(MainTableViewCell.self) else {
             return UITableViewCell()
         }
         
         let fieldName = Resources.UserInfoFields.allCases[indexPath.row].rawValue
+        let value = UserDefaultsManager.getUserInfoValue(fieldName)
 
-        cell.cellConfigure(name: fieldName)
+        cell.cellConfigure(name: fieldName, value: value)
         
         return cell
     }

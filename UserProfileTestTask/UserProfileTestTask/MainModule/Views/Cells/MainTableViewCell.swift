@@ -10,7 +10,6 @@ final class MainTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .right
-        label.text = "Test"
         label.font = Resources.Fonts.avenirNextRegular(with: 18)
         return label
     }()
@@ -33,8 +32,9 @@ final class MainTableViewCell: UITableViewCell {
         addView(descriptionLabel)
     }
     
-    internal func cellConfigure(name: String) {
+    internal func cellConfigure(name: String, value: String) {
         nameLabel.text = name
+        descriptionLabel.text = value == "" ? "Нет данных" : value
     }
 }
 
