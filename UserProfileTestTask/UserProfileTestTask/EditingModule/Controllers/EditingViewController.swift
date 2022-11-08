@@ -66,7 +66,7 @@ final class EditingViewController: UIViewController {
             presentChangeAlert {[weak self] changed in
                 guard let self = self else { return }
                 if changed {
-                    guard let mainTableViewController = self.navigationController?.viewControllers.first as? MainTableViewController else {
+                    guard let mainTableViewController = self.navigationController?.viewControllers.first as? MainViewController else {
                         return
                     }
                     mainTableViewController.changeUserInfo(model: editedUserInfo)

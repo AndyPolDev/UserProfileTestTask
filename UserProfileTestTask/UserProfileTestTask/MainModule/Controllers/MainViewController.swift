@@ -1,6 +1,8 @@
 import UIKit
 
-final class MainTableViewController: UITableViewController {
+final class MainViewController: UIViewController {
+    
+    private let mainTableView = MainTableView()
     
     private var userInfo = UserInfoModel()
     
@@ -8,9 +10,9 @@ final class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupViews()
+        setConstraints()
         getUserModel()
-        
-        tableView.register(MainTableViewCell.self)
+        setValueArray()
         
     }
     
@@ -22,6 +24,7 @@ final class MainTableViewController: UITableViewController {
                                          style: .plain,
                                          target: self,
                                          action: #selector(editingPressed))
+        view.addView(mainTableView)
     }
     
     private func getUserModel() {
@@ -36,10 +39,25 @@ final class MainTableViewController: UITableViewController {
         UserDefaultsManager.saveUserValue(Resources.UserInfoFields.gender.rawValue, model.gender)
     }
     
+    private func getValueArray() -> [String] {
+        var valueArray = [String]()
+        for key in Resources.UserInfoFields.allCases {
+            let value = UserDefaultsManager.getUserInfoValue(key.rawValue)
+            valueArray.append(value)
+        }
+        return valueArray
+    }
+    
+    private func setValueArray() {
+        let valueArray = getValueArray()
+        mainTableView.setValueArray(valueArray)
+        mainTableView.reloadData()
+    }
+    
     internal func changeUserInfo(model: UserInfoModel) {
         saveEditedUserInfo(save: model)
         userInfo = model
-        tableView.reloadData()
+        mainTableView.reloadData()
     }
     
     @objc private func editingPressed() {
@@ -48,34 +66,17 @@ final class MainTableViewController: UITableViewController {
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - setConstraints
 
-extension MainTableViewController {
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Resources.UserInfoFields.allCases.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(MainTableViewCell.self) else {
-            return UITableViewCell()
-        }
-        
-        let fieldName = Resources.UserInfoFields.allCases[indexPath.row].rawValue
-        let value = UserDefaultsManager.getUserInfoValue(fieldName)
-
-        cell.cellConfigure(name: fieldName, value: value)
-        
-        return cell
+extension MainViewController {
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            mainTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            mainTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
     }
 }
 
-//MARK: - UITableViewDelegate
-
-extension MainTableViewController {
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        indexPath.row == 1 ? UITableView.automaticDimension : 44
-    }
-}
 
