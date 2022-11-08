@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class UserDefaultsManager {
     
@@ -33,5 +33,17 @@ final class UserDefaultsManager {
         let stringValue = userDictionary[key] ?? ""
         
         return stringValue
+    }
+    
+    static func saveUserImage(image: UIImage) {
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        defaults.set(data, forKey: "userPhoto")
+    }
+    
+    static func loadUserImage() -> UIImage {
+        guard let data = defaults.data(forKey: "userPhoto"),
+              let image = UIImage(data: data) else {
+            return UIImage() }
+        return image
     }
 }

@@ -40,7 +40,7 @@ final class TextViewTableViewCell: UITableViewCell {
     }
     
     internal func getCellValue() -> String {
-        nameTextView.text
+        nameTextView.text == "Введите данные" ? "" : nameTextView.text
     }
     
     internal func cellConfigure(name: String, scrollEnable: Bool, value: String) {
@@ -65,7 +65,6 @@ extension TextViewTableViewCell: UITextViewDelegate {
             textView.text = ""
             textView.textColor = .black
         }
-        
         return true
     }
     
@@ -91,7 +90,6 @@ extension TextViewTableViewCell {
             nameTextView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             nameTextView.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10),
             nameTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            //nameTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
         ])
     }
 }

@@ -9,7 +9,7 @@ final class GenderPickerView: UIPickerView {
     weak var genderDelegate: GenderPickerViewProtocol?
     
     override init(frame: CGRect) {
-        super .init(frame: frame)
+        super.init(frame: frame)
         
         delegate = self
         dataSource = self
