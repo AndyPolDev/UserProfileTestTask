@@ -2,6 +2,14 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
+    private let userPhotoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .blue
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     private let mainTableView = MainTableView()
     
     private var userInfo = UserInfoModel()
@@ -13,7 +21,10 @@ final class MainViewController: UIViewController {
         setConstraints()
         getUserModel()
         setValueArray()
-        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.height / 2
     }
     
     private func setupViews() {
@@ -24,11 +35,13 @@ final class MainViewController: UIViewController {
                                          style: .plain,
                                          target: self,
                                          action: #selector(editingPressed))
+        view.addView(userPhotoImageView)
         view.addView(mainTableView)
     }
     
     private func getUserModel() {
         userInfo = UserDefaultsManager.getUserInfoModel()
+        userPhotoImageView.image = UserDefaultsManager.loadUserImage()
     }
     
     private func saveEditedUserInfo(save model: UserInfoModel) {
@@ -57,11 +70,19 @@ final class MainViewController: UIViewController {
     internal func changeUserInfo(model: UserInfoModel) {
         saveEditedUserInfo(save: model)
         userInfo = model
+        setValueArray()
         mainTableView.reloadData()
     }
     
+    internal func changeUserPhoto(image: UIImage?) {
+        userPhotoImageView.image = image
+        
+        guard let image else { return }
+        UserDefaultsManager.saveUserImage(image: image)
+    }
+    
     @objc private func editingPressed() {
-        let editingTableViewController = EditingViewController(userInfo)
+        let editingTableViewController = EditingViewController(userInfo, userPhoto: userPhotoImageView.image)
         navigationController?.pushViewController(editingTableViewController, animated: true)
     }
 }
@@ -71,12 +92,16 @@ final class MainViewController: UIViewController {
 extension MainViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            mainTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            userPhotoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            userPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            userPhotoImageView.heightAnchor.constraint(equalToConstant: 100),
+            userPhotoImageView.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        NSLayoutConstraint.activate([
+            mainTableView.topAnchor.constraint(equalTo: userPhotoImageView.bottomAnchor, constant: 20),
             mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             mainTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
 }
-
-

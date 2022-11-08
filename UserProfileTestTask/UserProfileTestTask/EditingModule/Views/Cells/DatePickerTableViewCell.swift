@@ -33,7 +33,11 @@ final class DatePickerTableViewCell: UITableViewCell {
     }
     
     internal func getCellValue() -> String {
-        datePicker.date.getStringFromDate()
+        if datePicker.date.getStringFromDate() == Date().getStringFromDate() {
+            return ""
+        } else {
+            return datePicker.date.getStringFromDate()
+        }
     }
     
     internal func cellConfigure(name: String, date: Date) {
@@ -46,7 +50,6 @@ final class DatePickerTableViewCell: UITableViewCell {
 
 extension DatePickerTableViewCell {
     private func setConstraints() {
-        
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

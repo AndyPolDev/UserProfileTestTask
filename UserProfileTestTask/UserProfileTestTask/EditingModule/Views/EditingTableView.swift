@@ -34,7 +34,7 @@ final class EditingTableView: UITableView {
         
         userInfo.firstName = firstNameCell.getCellValue()
         userInfo.secondName = secondNameCell.getCellValue()
-        userInfo.thirdName = thirdNameCell.getCellValue() == "Введите данные" ? "" : thirdNameCell.getCellValue()
+        userInfo.thirdName = thirdNameCell.getCellValue()
         userInfo.birthday = birthdayCell.getCellValue()
         userInfo.gender = genderCell.getCellValue()
     }
@@ -43,7 +43,6 @@ final class EditingTableView: UITableView {
         editUserInfoModel()
         return userInfo
     }
-    
 }
 
 //MARK: - UITableViewDataSource
