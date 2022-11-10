@@ -3,14 +3,26 @@ import PhotosUI
 
 final class EditingViewController: UIViewController {
     
-    private let userPhotoImageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
-        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .lightGray
+        imageView.tintColor = .white
+        imageView.image = UIImage(named: "addUser")?.withRenderingMode(.alwaysTemplate)
+        imageView.contentMode = .center
         imageView.clipsToBounds = true
         return imageView
     }()
     
+    private let userPhotoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .clear
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+        
     private let editingTableView = EditingTableView()
     private var userInfo = UserInfoModel()
     private var userPhotoIsChanged = false
@@ -34,6 +46,7 @@ final class EditingViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        backgroundImageView.layer.cornerRadius = userPhotoImageView.frame.height / 2
         userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.height / 2
     }
     
@@ -47,6 +60,7 @@ final class EditingViewController: UIViewController {
                                                             action: #selector(saveButtonPressed))
         let backBarButtonItem = UIBarButtonItem.createCustomButton(viewController: self, selector: #selector(backBarButtonItemPressed))
         navigationItem.leftBarButtonItem = backBarButtonItem
+        view.addView(backgroundImageView)
         view.addView(userPhotoImageView)
         editingTableView.setUserModel(userInfo)
         view.addView(editingTableView)
@@ -73,7 +87,6 @@ final class EditingViewController: UIViewController {
     }
     
     @objc private func userPhotoPressed() {
-        print("pressed")
         if #available(iOS 14.0, *) {
             presentPHPicker()
         } else {
@@ -185,12 +198,19 @@ extension EditingViewController: UIGestureRecognizerDelegate {
 extension EditingViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 100),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
             userPhotoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             userPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             userPhotoImageView.heightAnchor.constraint(equalToConstant: 100),
             userPhotoImageView.widthAnchor.constraint(equalToConstant: 100)
         ])
-        
+    
         NSLayoutConstraint.activate([
             editingTableView.topAnchor.constraint(equalTo: userPhotoImageView.bottomAnchor, constant: 20),
             editingTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),

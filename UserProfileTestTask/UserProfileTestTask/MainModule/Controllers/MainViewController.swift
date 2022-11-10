@@ -4,7 +4,9 @@ final class MainViewController: UIViewController {
     
     private let userPhotoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .lightGray
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.gray.cgColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
